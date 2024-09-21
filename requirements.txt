@@ -3,4 +3,4 @@ graphviz
 pandas
 plotly
 numpy
-matplotlib
+matplotlib-korean-font
