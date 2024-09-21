@@ -1,8 +1,14 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib import font_manager, rc
+
+# 한글 폰트 설정
+plt.rcParams['font.family'] = 'NanumGothic'
+plt.rcParams['axes.unicode_minus'] = False
 
 def main():
+    st.set_page_config(page_title="강수량과 작물 생산량의 관계", layout="wide")
     st.title("강수량과 작물 생산량의 관계")
 
     # 데이터 준비
@@ -27,7 +33,7 @@ def main():
     ])
 
     # 그래프 생성
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(10, 6))
     ax.scatter(rice_data["precipitation"], rice_data["production"], label="미곡", color="blue")
     ax.scatter(potato_data["precipitation"], potato_data["production"], label="서류", color="green")
     
