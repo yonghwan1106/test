@@ -46,8 +46,36 @@ def main():
     # Display graph
     st.pyplot(fig)
     
-    # The rest of your code remains the same
-    # ...
+    # Add legend explanation
+    st.markdown("**Legend:**")
+    st.markdown("- Rice: Blue")
+    st.markdown("- Potato: Green")
+    
+    # Add axis explanation
+    st.markdown("**X-axis:** Precipitation (mm)")
+    st.markdown("**Y-axis:** Production (ton)")
+
+    # Add analysis
+    st.subheader("Analysis:")
+    st.write("""
+    1. Rice production seems to have a slight negative correlation with precipitation. As precipitation increases, there's a slight tendency for rice production to decrease.
+    
+    2. Potato production shows a more pronounced negative correlation with precipitation. There's a clear trend of decreasing potato production as precipitation increases.
+    
+    3. The highest potato production occurs at lower precipitation levels (around 1200-1400 mm), while the lowest production is at the highest precipitation level (around 1800 mm).
+    
+    4. Rice production appears more stable across different precipitation levels compared to potato production.
+    
+    5. The data suggests that excessive precipitation might be more detrimental to potato crops than to rice crops in this region.
+    """)
+
+    st.subheader("Conclusions:")
+    st.write("""
+    - Potato farming in this region might benefit from better drainage systems to manage high precipitation levels.
+    - Rice farming appears more resilient to precipitation changes, but there's still a slight negative impact from increased rainfall.
+    - For both crops, but especially for potatoes, it might be beneficial to develop varieties that are more tolerant to high precipitation.
+    - Agricultural policies and support systems should consider these precipitation-production relationships when planning for climate change adaptation.
+    """)
 
 if __name__ == "__main__":
     main()
