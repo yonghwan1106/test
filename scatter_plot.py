@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+import matplotlib.pyplot as plt
 
 def main():
     st.title("강수량과 작물 생산량의 관계")
@@ -26,18 +26,18 @@ def main():
         {"precipitation": 1529, "production": 26726, "crop": "서류"},
     ])
 
-    # 데이터 합치기
-    data = pd.concat([rice_data, potato_data])
-
-    # 산점도 생성
-    fig = px.scatter(data, x="precipitation", y="production", color="crop",
-                     labels={"precipitation": "강수량 (mm)", 
-                             "production": "생산량 (톤)", 
-                             "crop": "작물"},
-                     title="강수량과 작물 생산량의 관계")
+    # 그래프 생성
+    fig, ax = plt.subplots()
+    ax.scatter(rice_data["precipitation"], rice_data["production"], label="미곡", color="blue")
+    ax.scatter(potato_data["precipitation"], potato_data["production"], label="서류", color="green")
+    
+    ax.set_xlabel("강수량 (mm)")
+    ax.set_ylabel("생산량 (톤)")
+    ax.set_title("강수량과 작물 생산량의 관계")
+    ax.legend()
 
     # 그래프 표시
-    st.plotly_chart(fig, use_container_width=True)
+    st.pyplot(fig)
 
 if __name__ == "__main__":
     main()
